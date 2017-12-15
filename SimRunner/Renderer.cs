@@ -13,9 +13,9 @@ namespace SimRunner
     public class Renderer
     {
         private Canvas m_Canvas;
-        private AutoJunctSimulation m_Simulation;
+        private IAutoJunctSimulation m_Simulation;
         private Timer m_Looper;
-        public Renderer(Canvas canvas, AutoJunctSimulation simulation)
+        public Renderer(Canvas canvas, IAutoJunctSimulation simulation)
         {
             m_Canvas = canvas;
             m_Simulation = simulation;

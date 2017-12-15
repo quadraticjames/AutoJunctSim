@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoJunctSim
 {
-    public class AutoJunctSimulation : IAutoJunctSimulation
+    interface ICanvasWriter
     {
-        public void Advance(TimeSpan deltaTime)
-        {
-
-        }
     }
 }
