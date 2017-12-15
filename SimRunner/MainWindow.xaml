@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="750">
     <Grid>
-        <Canvas HorizontalAlignment="Left" Height="470" VerticalAlignment="Top" Width="743" Margin="0,0,0,0"/>
+        <Canvas Name="m_Canvas"  HorizontalAlignment="Left" Height="470" VerticalAlignment="Top" Width="743" Margin="0,0,0,0"/>
 
     </Grid>
 </Window>
