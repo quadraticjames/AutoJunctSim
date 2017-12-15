@@ -30,7 +30,8 @@ namespace SimRunner
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             var simulation = new AutoJunctSimulation();
-            var renderer = new Renderer(m_Canvas, simulation);
+            var canvasWriter = new CanvasWriter();
+            var renderer = new Renderer(canvasWriter, simulation);
             renderer.Start();
         }
     }

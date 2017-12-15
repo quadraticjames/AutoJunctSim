@@ -13,10 +13,10 @@ namespace SimRunner
 {
     public class Renderer
     {
-        private Canvas m_Canvas;
+        private ICanvasWriter m_Canvas;
         private IAutoJunctSimulation m_Simulation;
         private Timer m_Looper;
-        public Renderer(Canvas canvas, IAutoJunctSimulation simulation)
+        public Renderer(ICanvasWriter canvas, IAutoJunctSimulation simulation)
         {
             m_Canvas = canvas;
             m_Simulation = simulation;
@@ -51,7 +51,7 @@ namespace SimRunner
         private void AdvanceAndRender(TimeSpan delta)
         {
             m_Simulation.Advance(delta);
-            var renderTransaction = new TransactionCanvasWriter();
+            var renderTransaction = new TransactionCanvasWriter(m_Canvas);
             Render(renderTransaction);
             renderTransaction.Execute();
         }
