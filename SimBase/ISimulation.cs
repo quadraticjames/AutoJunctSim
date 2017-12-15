@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SimBase
 {
-    public class Class1
+    public interface ISimulation
     {
+        void Advance(TimeSpan delta);
     }
 }

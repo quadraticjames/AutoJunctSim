@@ -101,6 +101,10 @@
       <Project>{83fc604b-00e9-405c-a1c8-246d0f3223ef}</Project>
       <Name>AutoJunctSim</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SimBase\SimBase.csproj">
+      <Project>{a95b8913-6a37-454b-b992-a0c7ba468794}</Project>
+      <Name>SimBase</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
