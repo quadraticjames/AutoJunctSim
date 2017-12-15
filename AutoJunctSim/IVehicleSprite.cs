@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SimBase;
 
 namespace AutoJunctSim
 {
-    public interface IAutoJunctSimulation : ISimulation
+    public interface IVehicleSprite
     {
-        IList<IVehicleSprite> Vehicles { get; }
+        Point CentrePoint { get; }
+        Size Size { get; }
+        Angle Heading { get; }
     }
 }

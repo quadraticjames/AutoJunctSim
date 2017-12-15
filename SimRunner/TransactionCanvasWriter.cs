@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace SimRunner
 {
-    interface CanvasWriter
+    public class TransactionCanvasWriter : ICanvasWriter
     {
+        public void Execute()
+        {
+
+        }
     }
 }

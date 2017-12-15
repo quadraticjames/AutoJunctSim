@@ -56,8 +56,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CanvasWriter.cs" />
+    <Compile Include="CoordinateConverter.cs" />
     <Compile Include="ICanvasWriter.cs" />
     <Compile Include="Renderer.cs" />
+    <Compile Include="TransactionCanvasWriter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

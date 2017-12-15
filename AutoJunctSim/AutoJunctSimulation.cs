@@ -12,5 +12,10 @@ namespace AutoJunctSim
         {
 
         }
+
+        public IList<IVehicleSprite> Vehicles
+        {
+            get; private set;
+        } = new List<IVehicleSprite>();
     }
 }

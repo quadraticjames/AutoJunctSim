@@ -19,6 +19,7 @@ namespace SimRunner
         {
             m_Canvas = canvas;
             m_Simulation = simulation;
+            m_SimulationToCanvasMapping = new CoordinateConverter();
         }
 
         public void Start()
@@ -29,6 +30,8 @@ namespace SimRunner
 
         private bool m_Rendering = false;
         private DateTime m_LastRenderStart;
+
+        private CoordinateConverter m_SimulationToCanvasMapping;
 
         private void OnTick(object state)
         {
@@ -47,12 +50,21 @@ namespace SimRunner
         private void AdvanceAndRender(TimeSpan delta)
         {
             m_Simulation.Advance(delta);
-            Render();
+            var renderTransaction = new TransactionCanvasWriter();
+            Render(renderTransaction);
+            renderTransaction.Execute();
         }
 
-        private void Render()
+        private void Render(ICanvasWriter canvasWriter)
         {
+            foreach(var vehicle in m_Simulation.Vehicles)
+            {
+                var centre = m_SimulationToCanvasMapping.Convert(vehicle.CentrePoint);
+                var size = m_SimulationToCanvasMapping.Convert(vehicle.Size);
+                var heading = vehicle.Heading;
 
+                canvasWriter.DrawRectangle(centre, size, heading);
+            }
         }
     }
 }
