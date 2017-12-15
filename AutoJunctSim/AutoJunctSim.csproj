@@ -40,13 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Angle.cs" />
     <Compile Include="AutoJunctSimulation.cs" />
     <Compile Include="IAutoJunctSim.cs" />
     <Compile Include="IVehicleSprite.cs" />
-    <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Size.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutoJunct\AutoJunct.csproj">
@@ -56,6 +53,10 @@
     <ProjectReference Include="..\SimBase\SimBase.csproj">
       <Project>{a95b8913-6a37-454b-b992-a0c7ba468794}</Project>
       <Name>SimBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpatialTypes\SpatialTypes.csproj">
+      <Project>{45f95c52-86b3-4d57-aed4-be27d0228026}</Project>
+      <Name>SpatialTypes</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

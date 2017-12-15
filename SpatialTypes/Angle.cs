@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoJunctSim
+namespace SpatialTypes
 {
-    public class Size
+    public class Angle
     {
     }
 }

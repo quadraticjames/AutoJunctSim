@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoJunctSim", "AutoJunctSi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoJunct", "AutoJunct\AutoJunct.csproj", "{EAC1B590-37B3-4ABE-931D-F86053AE4419}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpatialTypes", "SpatialTypes\SpatialTypes.csproj", "{45F95C52-86B3-4D57-AED4-BE27D0228026}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{EAC1B590-37B3-4ABE-931D-F86053AE4419}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAC1B590-37B3-4ABE-931D-F86053AE4419}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAC1B590-37B3-4ABE-931D-F86053AE4419}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45F95C52-86B3-4D57-AED4-BE27D0228026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45F95C52-86B3-4D57-AED4-BE27D0228026}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45F95C52-86B3-4D57-AED4-BE27D0228026}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45F95C52-86B3-4D57-AED4-BE27D0228026}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
