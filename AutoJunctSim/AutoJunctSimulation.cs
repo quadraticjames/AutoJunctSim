@@ -11,7 +11,7 @@ namespace AutoJunctSim
     {
         public void Advance(TimeSpan deltaTime)
         {
-
+            ((DummyVehicleSprite)Vehicles.First()).CentrePoint += new Point(0.45, 0.45);
         }
 
         public IList<IVehicleSprite> Vehicles
@@ -21,7 +21,7 @@ namespace AutoJunctSim
     
         private class DummyVehicleSprite : IVehicleSprite
         {
-            public Point CentrePoint { get; } = new Point(0, 0);
+            public Point CentrePoint { get; set; } = new Point(0, 0);
             public Size Size { get; } = new Size(2, 5);
             public Angle Heading { get; } = Angle.FromDegrees(135);
             public Guid Guid { get; } = Guid.NewGuid();

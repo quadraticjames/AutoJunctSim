@@ -32,7 +32,7 @@ namespace SimRunner
 
             foreach (var newVehicle in vehicles.Where(v => !m_Rectangles.ContainsKey(v.Guid)))
             {
-                System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate {
+                System.Windows.Application.Current.Dispatcher.Invoke(delegate {
 
                     var rect = new Rectangle();
 
@@ -55,7 +55,7 @@ namespace SimRunner
 
             foreach(var vehicle in vehicles)
             {
-                System.Windows.Application.Current.Dispatcher.Invoke((Action)delegate
+                System.Windows.Application.Current.Dispatcher.Invoke(delegate
                 {
                     var rect = m_Rectangles[vehicle.Guid];
                     var rotateTransform = (RotateTransform)rect.RenderTransform;

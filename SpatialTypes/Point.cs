@@ -31,5 +31,10 @@ namespace SpatialTypes
         {
             return new Point(a.X - b.X, a.Y - b.Y);
         }
+
+        public override string ToString()
+        {
+            return $"{X.ToString("N1")}, {Y.ToString("N1")}";
+        }
     }
 }
