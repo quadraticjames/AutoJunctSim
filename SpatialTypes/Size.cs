@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace SpatialTypes
 {
-    public class Size
+    public class Size : Point
     {
+        public Size(double x, double y) : base(x, y)
+        {
+
+        }
     }
 }
