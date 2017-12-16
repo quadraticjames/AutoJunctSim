@@ -20,7 +20,7 @@ namespace SimRunner
         {
             m_Canvas = canvas;
             m_Simulation = simulation;
-            m_SimulationToCanvasMapping = new CoordinateConverter();
+            m_SimulationToCanvasMapping = new CoordinateConverter(10, new SpatialTypes.Point(0,0));
         }
 
         public void Start()
@@ -51,21 +51,18 @@ namespace SimRunner
         private void AdvanceAndRender(TimeSpan delta)
         {
             m_Simulation.Advance(delta);
-            var renderTransaction = new TransactionCanvasWriter(m_Canvas);
-            Render(renderTransaction);
-            renderTransaction.Execute();
+            Render(m_Canvas);
         }
 
         private void Render(ICanvasWriter canvasWriter)
         {
-            foreach(var vehicle in m_Simulation.Vehicles)
+            canvasWriter.DrawVehicles(m_Simulation.Vehicles.Select(v => new VehicleDisplay
             {
-                var centre = m_SimulationToCanvasMapping.Convert(vehicle.CentrePoint);
-                var size = m_SimulationToCanvasMapping.Convert(vehicle.Size);
-                var heading = vehicle.Heading;
-
-                canvasWriter.DrawRectangle(centre, size, heading);
-            }
+                Guid = v.Guid,
+                CentrePoint = m_SimulationToCanvasMapping.Convert(v.CentrePoint),
+                Size = m_SimulationToCanvasMapping.Convert(v.Size),
+                Heading = v.Heading
+            }));
         }
     }
 }

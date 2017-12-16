@@ -7,8 +7,11 @@ using SpatialTypes;
 
 namespace SimRunner
 {
-    public interface ICanvasWriter
+    public class VehicleDisplay
     {
-        void DrawVehicles(IEnumerable<VehicleDisplay> vehicles);
+        public Guid Guid;
+        public Point CentrePoint;
+        public Size Size;
+        public Angle Heading;
     }
 }

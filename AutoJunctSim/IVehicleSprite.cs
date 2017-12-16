@@ -12,5 +12,6 @@ namespace AutoJunctSim
         Point CentrePoint { get; }
         Size Size { get; }
         Angle Heading { get; }
+        Guid Guid { get; }
     }
 }
