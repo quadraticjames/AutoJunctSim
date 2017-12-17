@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConstantStreamable.cs" />
     <Compile Include="ISimulation.cs" />
     <Compile Include="IStreamable.cs" />
     <Compile Include="IStreamMoment.cs" />
