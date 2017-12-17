@@ -3,28 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SpatialTypes;
+using SimBase;
 
 namespace AutoJunctSim
 {
     public class AutoJunctSimulation : IAutoJunctSimulation
     {
+        private TimeSpan m_Elapsed = TimeSpan.Zero;
+        private IAutoJunctSimulationStream m_SimulationStream;
         public void Advance(TimeSpan deltaTime)
         {
-            ((DummyVehicleSprite)Vehicles.First()).CentrePoint += new Point(0.45, 0.45);
+            m_Elapsed += deltaTime;
+
+            var moment = new TimeSpanMoment(m_Elapsed);
+
+            Vehicles = m_SimulationStream
+                .Vehicles
+                .AtMoment(new TimeSpanMoment(m_Elapsed))
+                .Select(s => s.AtMoment(moment))
+                .ToList();
         }
 
         public IList<IVehicleSprite> Vehicles
         {
             get; private set;
-        } = new List<IVehicleSprite>() { new DummyVehicleSprite() };
-    
-        private class DummyVehicleSprite : IVehicleSprite
-        {
-            public Point CentrePoint { get; set; } = new Point(0, 0);
-            public Size Size { get; } = new Size(2, 5);
-            public Angle Heading { get; } = Angle.FromDegrees(135);
-            public Guid Guid { get; } = Guid.NewGuid();
         }
+    }
+
+    public interface IAutoJunctSimulationStream
+    {
+        IStreamable<IList<IStreamable<IVehicleSprite>>> Vehicles { get; }
     }
 }
