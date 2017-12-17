@@ -94,7 +94,7 @@ namespace SimBase
 
             private IEnumerable<TList> GetValues()
             {
-                return new TList[] { Value }.Concat(Next.GetValues());
+                return new TList[] { Value }.Concat(Next?.GetValues() ?? Enumerable.Empty<TList>());
             }     
             
             public LinkList(TList head)
