@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Angle.cs" />
     <Compile Include="CoordinateConverter.cs" />
+    <Compile Include="IInterpolable.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Size.cs" />

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpatialTypes
 {
-    public class Point
+    public class Point : IInterpolable<Point>
     {
         public readonly double X;
         public readonly double Y;
@@ -35,6 +31,16 @@ namespace SpatialTypes
         public override string ToString()
         {
             return $"{X.ToString("N1")}, {Y.ToString("N1")}";
+        }
+
+        public Point Interpolate(Point end, double fraction)
+        {
+            if (fraction < 0 || fraction > 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(fraction), fraction, "May only be between 0 and 1 inclusive");
+            }
+
+            return this + ((end - this) * fraction);
         }
     }
 }
