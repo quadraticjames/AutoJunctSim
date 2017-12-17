@@ -41,11 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConstantStreamable.cs" />
+    <Compile Include="InterpolatingStreamable.cs" />
     <Compile Include="ISimulation.cs" />
     <Compile Include="IStreamable.cs" />
     <Compile Include="IStreamMoment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TimeSpanMoment.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpatialTypes\SpatialTypes.csproj">
+      <Project>{45f95c52-86b3-4d57-aed4-be27d0228026}</Project>
+      <Name>SpatialTypes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

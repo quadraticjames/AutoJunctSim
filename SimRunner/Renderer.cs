@@ -20,7 +20,7 @@ namespace SimRunner
         {
             m_Canvas = canvas;
             m_Simulation = simulation;
-            m_SimulationToCanvasMapping = new CoordinateConverter(10, new SpatialTypes.Point(50,50));
+            m_SimulationToCanvasMapping = new CoordinateConverter(3, new SpatialTypes.Point(50,50));
         }
 
         public void Start()

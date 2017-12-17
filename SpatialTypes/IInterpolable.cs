@@ -1,6 +1,6 @@
 ﻿namespace SpatialTypes
 {
-    interface IInterpolable<T>
+    public interface IInterpolable<T>
     {
         /// <summary>
         /// Implementing this means you can understand T as a continuous rather than discrete variable,

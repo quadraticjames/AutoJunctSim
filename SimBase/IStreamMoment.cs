@@ -8,6 +8,6 @@ namespace SimBase
 {
     public interface IStreamMoment
     {
-
+        double PositionInStream { get; }
     }
 }

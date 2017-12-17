@@ -14,5 +14,6 @@ namespace SimBase
             m_TimeSpan = timeSpan;
         }
 
+        public double PositionInStream => m_TimeSpan.TotalMilliseconds;
     }
 }

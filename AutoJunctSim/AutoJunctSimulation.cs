@@ -59,7 +59,7 @@ namespace AutoJunctSim
         {
             m_Size = new Size(2.0, 5.0);
             m_Guid = Guid.NewGuid();
-            m_CentrePoint = new ConstantStreamable<Point>(new Point(0, 0));
+            m_CentrePoint = new InterpolatingStreamable<Point>(new Point(0, 0), new Point(134, 134), new TimeSpanMoment(TimeSpan.Zero), new TimeSpanMoment(TimeSpan.FromSeconds(10)));
             m_Heading = new ConstantStreamable<Angle>(Angle.FromDegrees(135));
         }
 
