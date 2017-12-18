@@ -20,17 +20,9 @@ namespace SimBase
                 throw new ArgumentOutOfRangeException(nameof(end), end, $"Must be greater than {nameof(start)}");
             }
 
-            var lastItemBeforeNew = m_Items;
-            while (lastItemBeforeNew.Next != null && lastItemBeforeNew.Next.Value.Item1 < start)
-            {
-                lastItemBeforeNew = lastItemBeforeNew.Next;
-            }
+            var lastItemBeforeNew = GetItemAtPosition(start, m_Items);
 
-            var firstItemAfterNew = lastItemBeforeNew;
-            while (firstItemAfterNew.Next != null && firstItemAfterNew.Next.Value.Item1 < end)
-            {
-                firstItemAfterNew = firstItemAfterNew.Next;
-            }
+            var firstItemAfterNew = GetItemAtPosition(end, lastItemBeforeNew);
 
             var newNode = new LinkList<Tuple<double, T>>(new Tuple<double, T>(start, item));
 
@@ -42,11 +34,7 @@ namespace SimBase
 
         public void Add(double start, T item)
         {
-            var lastItemBeforeNew = m_Items;
-            while (lastItemBeforeNew.Next != null && lastItemBeforeNew.Next.Value.Item1 < start)
-            {
-                lastItemBeforeNew = lastItemBeforeNew.Next;
-            }
+            var lastItemBeforeNew = GetItemAtPosition(start, m_Items);
 
             var newNode = new LinkList<Tuple<double, T>>(new Tuple<double, T>(start, item));
 
@@ -57,13 +45,17 @@ namespace SimBase
         {
             get
             {
-                var pointer = m_Items;
-                while (pointer.Next != null && pointer.Next.Value.Item1 <= position)
-                {
-                    pointer = pointer.Next;
-                }
-                return pointer.Value.Item2;
+                return GetItemAtPosition(position, m_Items).Value.Item2;
             }
+        }
+
+        private static LinkList<Tuple<double, T>> GetItemAtPosition(double position, LinkList<Tuple<double, T>> items)
+        {
+            while(items.Next != null && items.Next.Value.Item1 <= position)
+            {
+                items = items.Next;
+            }
+            return items;
         }
 
         private class LinkList<TList> : IEnumerable<TList>
