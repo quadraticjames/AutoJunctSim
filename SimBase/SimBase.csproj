@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CompositeStreamable.cs" />
     <Compile Include="ConstantStreamable.cs" />
+    <Compile Include="DoubleRangeMap.cs" />
     <Compile Include="InterpolatingStreamable.cs" />
     <Compile Include="ISimulation.cs" />
     <Compile Include="IStreamable.cs" />
