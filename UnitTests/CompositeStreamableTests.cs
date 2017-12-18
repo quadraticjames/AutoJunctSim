@@ -43,7 +43,7 @@ namespace UnitTests
         }
 
         [Test]
-        public void EmptyCompStrAlwaysThrowsException(double time)
+        public void EmptyCompStrAlwaysThrowsException()
         {
             var compositeStreamable = new CompositeStreamable<int>();
             Assert.That(() => compositeStreamable.AtMoment(new DoubleStreamMoment(0)), Throws.InstanceOf<ArgumentException>());
