@@ -7,16 +7,6 @@ namespace UnitTests
     [TestFixture]
     public class CompositeStreamableTests
     {
-        private class DoubleStreamMoment : IStreamMoment
-        {
-            private double m_Value;
-            public double PositionInStream => m_Value;
-            public DoubleStreamMoment(double value)
-            {
-                m_Value = value;
-            }
-        }
-
         private class ConstStreamable<T> : IStreamable<T>
         {
             private T m_Constant;
