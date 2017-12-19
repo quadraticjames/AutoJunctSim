@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using NSubstitute;
 using NUnit.Framework;
 using SimBase;
 
@@ -7,25 +9,11 @@ namespace UnitTests
     [TestFixture]
     public class CompositeStreamableTests
     {
-        private class ConstStreamable<T> : IStreamable<T>
-        {
-            private T m_Constant;
-            public ConstStreamable(T constant)
-            {
-                m_Constant = constant;
-            }
-
-            public T AtMoment(IStreamMoment moment)
-            {
-                return m_Constant;
-            }
-        }
-
         [Test]
         public void AccessingUnassignedRegionThrowsException()
         {
             var compositeStreamable = new CompositeStreamable<int>();
-            compositeStreamable.Add(new DoubleStreamMoment(1), new DoubleStreamMoment(6), new ConstStreamable<int>(5));
+            compositeStreamable.Add(new DoubleStreamMoment(1), new DoubleStreamMoment(6), Substitute.For<IStreamable<int>>());
             Assert.That(() => compositeStreamable.AtMoment(new DoubleStreamMoment(0)), Throws.InstanceOf<ArgumentException>());
             Assert.That(() => compositeStreamable.AtMoment(new DoubleStreamMoment(0.99)), Throws.InstanceOf<ArgumentException>());
             Assert.That(() => compositeStreamable.AtMoment(new DoubleStreamMoment(6)), Throws.InstanceOf<ArgumentException>());
@@ -44,9 +32,18 @@ namespace UnitTests
         public void AccessingAssignedRegionReturnsCorrectResult()
         {
             var compositeStreamable = new CompositeStreamable<int>();
-            compositeStreamable.Add(new DoubleStreamMoment(1), new DoubleStreamMoment(6), new ConstStreamable<int>(5));
-            Assert.That(compositeStreamable.AtMoment(new DoubleStreamMoment(1)), Is.EqualTo(5));
-            Assert.That(compositeStreamable.AtMoment(new DoubleStreamMoment(5.99)), Is.EqualTo(5));
+            var memberStreamable = Substitute.For<IStreamable<int>>();
+            compositeStreamable.Add(new DoubleStreamMoment(1), new DoubleStreamMoment(6), memberStreamable);
+
+            var streamMoments = new DoubleStreamMoment[] { new DoubleStreamMoment(1), new DoubleStreamMoment(5.99) };
+
+            foreach(var moment in streamMoments)
+            {
+                compositeStreamable.AtMoment(moment);
+            }
+
+            var calls = memberStreamable.ReceivedCalls();
+            Assert.That(calls.Select(c => c.GetArguments()), Is.EquivalentTo(streamMoments.Select(m => new object[] { m })));
         }
     }
 }
