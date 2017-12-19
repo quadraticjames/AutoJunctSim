@@ -61,6 +61,7 @@
     <Compile Include="ConstantStreamableTests.cs" />
     <Compile Include="DoubleRangeMapTests.cs" />
     <Compile Include="DoubleStreamMoment.cs" />
+    <Compile Include="InterpolatingStreamableTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
