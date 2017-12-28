@@ -24,7 +24,10 @@ namespace SimRunner
             var vehicleGuids = vehicles.Select(v => v.Guid).ToList();
             foreach(var removedGuid in m_Rectangles.Keys.Except(vehicleGuids).ToList())
             {
-                m_Canvas.Children.Remove(m_Rectangles[removedGuid]);
+                System.Windows.Application.Current.Dispatcher.Invoke(delegate
+                {
+                    m_Canvas.Children.Remove(m_Rectangles[removedGuid]);
+                });
                 m_Rectangles.Remove(removedGuid);
             }
 
