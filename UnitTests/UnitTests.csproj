@@ -63,6 +63,7 @@
     <Compile Include="DoubleStreamMoment.cs" />
     <Compile Include="InterpolatingStreamableTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SamplingStreamableTests.cs" />
     <Compile Include="StreamableListTests.cs" />
   </ItemGroup>
   <ItemGroup>

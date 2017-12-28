@@ -48,6 +48,7 @@
     <Compile Include="IStreamable.cs" />
     <Compile Include="IStreamMoment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SamplingStreamable.cs" />
     <Compile Include="StreamableList.cs" />
     <Compile Include="TimeSpanMoment.cs" />
   </ItemGroup>
