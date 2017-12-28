@@ -70,5 +70,41 @@ namespace UnitTests
                 Assert.That(list.AtMoment(moment), Is.Empty);
             }
         }
+
+        [Test]
+        public void ItemCantBeAddedBeforeLatestAddition()
+        {
+            var list = new StreamableList<int>();
+            list.AddAt(5, new DoubleStreamMoment(1));
+            Assert.That(() => list.AddAt(6, new DoubleStreamMoment(0.5)), Throws.InstanceOf<ArgumentOutOfRangeException>());
+        }
+
+        [Test]
+        public void ItemCantBeRemovedBeforeLatestAddition()
+        {
+            var list = new StreamableList<int>();
+            list.AddAt(6, new DoubleStreamMoment(0));
+            list.AddAt(5, new DoubleStreamMoment(1));
+            Assert.That(() => list.RemoveAt(6, new DoubleStreamMoment(0.5)), Throws.InstanceOf<ArgumentOutOfRangeException>());
+        }
+
+        [Test]
+        public void ItemCantBeAddedBeforeLatestRemoval()
+        {
+            var list = new StreamableList<int>();
+            list.AddAt(5, new DoubleStreamMoment(1));
+            list.RemoveAt(5, new DoubleStreamMoment(2));
+            Assert.That(() => list.AddAt(6, new DoubleStreamMoment(1.5)), Throws.InstanceOf<ArgumentOutOfRangeException>());
+        }
+
+        [Test]
+        public void ItemCantBeRemovedBeforeLatestRemoval()
+        {
+            var list = new StreamableList<int>();
+            list.AddAt(6, new DoubleStreamMoment(0));
+            list.AddAt(5, new DoubleStreamMoment(1));
+            list.RemoveAt(5, new DoubleStreamMoment(2));
+            Assert.That(() => list.RemoveAt(6, new DoubleStreamMoment(0.5)), Throws.InstanceOf<ArgumentOutOfRangeException>());
+        }
     }
 }

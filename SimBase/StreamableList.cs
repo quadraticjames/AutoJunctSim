@@ -44,24 +44,36 @@ namespace SimBase
             return added.Select(l => l.Item).Except(removedItems).ToList();
         }
 
+        private double LatestLog = 0;
+
         public void AddAt(T item, IStreamMoment moment)
         {
+            if(moment.PositionInStream < LatestLog)
+            {
+                throw new ArgumentOutOfRangeException(nameof(moment), "List must be accessed in chronological order");
+            }
             m_Log.Add(new Log()
             {
                 Time = moment.PositionInStream,
                 Item = item,
                 Type = Log.LogType.Add
             });
+            LatestLog = moment.PositionInStream;
         }
 
         public void RemoveAt(T item, IStreamMoment moment)
         {
+            if (moment.PositionInStream < LatestLog)
+            {
+                throw new ArgumentOutOfRangeException(nameof(moment), "List must be accessed in chronological order");
+            }
             m_Log.Add(new Log()
             {
                 Time = moment.PositionInStream,
                 Item = item,
                 Type = Log.LogType.Remove
             });
+            LatestLog = moment.PositionInStream;
         }
     }
 }
