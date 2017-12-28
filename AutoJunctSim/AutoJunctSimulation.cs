@@ -11,7 +11,14 @@ namespace AutoJunctSim
     public class AutoJunctSimulation : IAutoJunctSimulation
     {
         private TimeSpan m_Elapsed = TimeSpan.Zero;
-        private IAutoJunctSimulationStream m_SimulationStream = new AutoJunctSimulationStream();
+        private IAutoJunctSimulationStream m_SimulationStream;
+
+        public AutoJunctSimulation()
+        {
+            var stream = new AutoJunctSimulationStream();
+            stream.Start();
+            m_SimulationStream = stream;
+        }
         public void Advance(TimeSpan deltaTime)
         {
             m_Elapsed += deltaTime;
