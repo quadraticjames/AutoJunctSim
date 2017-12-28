@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoJunctSimulation.cs" />
+    <Compile Include="AutoJunctSimulationStream.cs" />
     <Compile Include="IAutoJunctSim.cs" />
+    <Compile Include="IAutoJunctSimulationStream.cs" />
     <Compile Include="IVehicleSprite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
