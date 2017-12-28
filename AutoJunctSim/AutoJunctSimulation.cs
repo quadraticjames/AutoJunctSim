@@ -42,9 +42,12 @@ namespace AutoJunctSim
 
         public AutoJunctSimulationStream()
         {
-            Vehicles = new ConstantStreamable<IList<IStreamable<IVehicleSprite>>>(
-                new List<IStreamable<IVehicleSprite>>() { new StreamableVehicleSprite() }
-                );
+            var sprite = new StreamableVehicleSprite();
+
+            var vehicles = new StreamableList<IStreamable<IVehicleSprite>>();
+            vehicles.AddAt(sprite, new TimeSpanMoment(TimeSpan.Zero));
+            vehicles.RemoveAt(sprite, new TimeSpanMoment(TimeSpan.FromSeconds(10)));
+            Vehicles = vehicles;
         }
     }
 
