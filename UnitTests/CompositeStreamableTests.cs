@@ -35,7 +35,7 @@ namespace UnitTests
             var memberStreamable = Substitute.For<IStreamable<int>>();
             compositeStreamable.Add(new DoubleStreamMoment(1), new DoubleStreamMoment(6), memberStreamable);
 
-            var streamMoments = new DoubleStreamMoment[] { new DoubleStreamMoment(1), new DoubleStreamMoment(5.99) };
+            var streamMoments = new DoubleStreamMoment[] { new DoubleStreamMoment(1), new DoubleStreamMoment(Math.PI), new DoubleStreamMoment(5.99) };
 
             foreach(var moment in streamMoments)
             {
