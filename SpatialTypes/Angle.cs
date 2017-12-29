@@ -61,5 +61,10 @@ namespace SpatialTypes
 
             return FromRadians(startR + ((endR - startR) * fraction));
         }
+
+        public static Point PointOnUnitCircleAtAngle(Angle a)
+        {
+            return new Point(Math.Sin(a.Radians), 0 - Math.Cos(a.Radians));
+        }
     }
 }
